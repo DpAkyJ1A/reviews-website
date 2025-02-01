@@ -1,0 +1,29 @@
+{
+  "name": "reviews-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 1696",
+    "build": "next build",
+    "start": "next start -p 1696",
+    "lint": "next lint",
+    "icons": "cd scripts && node icons.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "mime-types": "^2.1.35",
+    "next": "^14.2.18",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "sass": "^1.81.0"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "13.4.9",
+    "typescript": "^5"
+  }
+}
