@@ -19,7 +19,7 @@ export default function Menu(props: IProps) {
 
   return (
     <nav className={styles.menu}>
-      <Text>
+      <Text size="menu-name" weight="700">
         {name}
       </Text>
       <div className={styles.menu__items}>
