@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import Header from '@/components/Header/index.server';
 import Footer from '@/components/Footer/index.server';
+import LightsBackground from '@/components/LightsBackground/index.server';
 
 // Styles
 import '@/styles/build.sass';
@@ -18,11 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} height--100vh fl fl--dir-col`}
+        className={`${inter.className} relative--core min-height--100vh height--fit-content`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <LightsBackground>
+          <Header />
+          {children}
+          <Footer />
+        </LightsBackground>
       </body>
     </html>
   );

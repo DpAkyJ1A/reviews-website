@@ -1,0 +1,56 @@
+@import '../../../../../styles/common/media'
+
+.accordion
+    position: relative
+    width: 100%
+    display: flex
+    justify-content: space-between
+    margin-top: 76px
+
+    &__left,
+    &__right
+        width: 44%
+        & .accordion__card
+            border-bottom: 1px solid #FFFFFF33
+            &:last-child
+                border-bottom: unset
+                
+    &__separator
+        height: auto
+        width: 1px
+        background: #FFFFFF33
+
+    &__card
+        transition: all .4s ease-in-out
+        position: relative
+        padding: 28px 0
+        // &--active
+        //     padding: 48px
+        //         & .accordion__heading
+        //             margin-bottom: 16px
+    &__card-subcontent
+        height: 0
+        overflow: hidden
+        transition: height .3s ease-in-out
+    &__card-content
+        overflow: auto
+        opacity: 0
+        transition: transform 0.3s ease, opacity 1s ease
+        &--active
+            opacity: 1
+
+    &__heading
+        transition: .3s
+        display: flex
+        justify-content: space-between
+        align-items: center
+        flex: 1 0 100%
+        @media (max-width: $width-tablet)
+            align-items: flex-start
+
+    &__element-title
+        transition: all .3s ease-in-out
+
+    &__icon
+        // width: 50px
+        // height: 50px

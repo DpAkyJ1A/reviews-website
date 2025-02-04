@@ -1,0 +1,56 @@
+@import '../../../../styles/common/color'
+@import '../../../../styles/common/media'
+
+.advantages
+  margin-top: 242px
+
+  &__title
+    text-wrap: balance
+    max-width: 1200px
+    margin: 0 auto
+    width: fit-content
+    text-align: center
+
+  &__cards
+    display: flex
+    justify-content: space-between
+    gap: 25px
+    margin-top: 78px
+
+  &__card
+    width: 495px
+    background: linear-gradient(90.47deg, rgba(30, 141, 255, 0.2) 0%, rgba(157, 114, 255, 0.2) 25%, rgba(255, 71, 171, 0.2) 50%, rgba(255, 56, 107, 0.2) 74.5%, rgba(255, 129, 0, 0.2) 100%)
+    padding: 1px
+    border-radius: 20px
+
+  &__card-wrapper
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    height: 100%
+    padding: 26px 18px 30px
+    border-radius: inherit
+    background: #262626
+
+  &__card-text
+    margin-top: 24px
+
+  &__card-image-wrapper
+    position: relative
+    margin: 0 auto
+    margin-top: 54px
+    &--1
+      aspect-ratio: 438 / 322
+      width: 438px
+      @media (max-width: $width-2k)
+        width: calc(100vw * (438px / 1920px))
+    &--2
+      aspect-ratio: 278 / 325
+      width: 278px
+      @media (max-width: $width-2k)
+        width: calc(100vw * (278px / 1920px))
+    &--3
+      aspect-ratio: 370 / 325
+      width: 370px
+      @media (max-width: $width-2k)
+        width: calc(100vw * (370px / 1920px))

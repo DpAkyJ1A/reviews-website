@@ -1,0 +1,28 @@
+@import '../../../../styles/common/color'
+@import '../../../../styles/common/media'
+
+.enjoy
+  margin-top: 140px
+
+  &__content
+    width: 100%
+    display: flex
+    flex-direction: row-reverse
+    align-items: center
+    justify-content: space-between
+
+  &__title
+    text-wrap: balance
+    max-width: 900px
+    width: fit-content
+    text-align: right
+
+  &__card-text
+    margin-top: 24px
+
+  &__image
+    position: relative
+    aspect-ratio: 567 / 488
+    width: 567px
+    @media (max-width: $width-2k)
+      width: calc(100vw * (567px / 1920px))

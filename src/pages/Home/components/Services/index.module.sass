@@ -1,0 +1,45 @@
+@import '../../../../styles/common/color'
+
+.services
+  margin-top: 178px
+
+  &__goods
+    display: flex
+    gap: 25px
+    margin-top: 78px
+
+  &__goods-item
+    width: calc((100% - 100px) / 5)
+    background: linear-gradient(90.47deg, rgba(30, 141, 255, 0.2) 0%, rgba(157, 114, 255, 0.2) 25%, rgba(255, 71, 171, 0.2) 50%, rgba(255, 56, 107, 0.2) 74.5%, rgba(255, 129, 0, 0.2) 100%)
+    padding: 1px
+    border-radius: 20px
+
+  &__goods-item-wrapper
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    height: 100%
+    padding: 40px 15px 30px
+    border-radius: inherit
+    background: #262626
+
+  &__goods-item-description
+    margin-top: 28px
+
+  &__goods-item-image-wrapper
+    position: relative
+    width: 100%
+    aspect-ratio: 1 / 1
+
+  &__goods-item-image
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    width: 100%
+    height: auto
+
+  &__goods-item-bottom
+
+  &__goods-item-button
+    padding: 12px 36px
