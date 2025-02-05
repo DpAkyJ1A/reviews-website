@@ -1,4 +1,4 @@
-// import { checkReCaptcha } from "@/actions/recaptcha";
+import { checkReCaptcha } from "@/actions/recaptcha";
 import { NextRequest, NextResponse } from "next/server";
 import formData from "form-data";
 import Mailgun from "mailgun.js";
@@ -18,10 +18,13 @@ const topics = {
 export async function POST(req: NextRequest, { params }: { params: { type: string } }) {
   try {
     const { type } = params;
-    const { ...creds } = await req.json();
+    const {
+      gReCaptchaToken,
+      ...creds
+    } = await req.json();
 
-    // const result = await checkReCaptcha(gReCaptchaToken);
-    // if (!result) throw new Error("Invalid reCAPTCHA");
+    const result = await checkReCaptcha(gReCaptchaToken);
+    if (!result) throw new Error("Invalid reCAPTCHA");
 
     await mg.messages.create(process.env.MAILGUN_DOMAIN as string, {
       from: `Reviews <${process.env.MESSAGING_USER}@${process.env.MAILGUN_DOMAIN}>`,

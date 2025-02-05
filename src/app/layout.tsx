@@ -27,7 +27,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
-          <ToastContainer autoClose={500000} />
+          <ToastContainer />
         </LightsBackground>
       </body>
     </html>

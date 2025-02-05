@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-// import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -8,13 +8,12 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 // Components
-// import { Notification } from '@/common/Notification';
 import Input from '@/common/Input/index.client';
 import TextAreaComponent from '@/common/TextArea';
 import Button from '@/common/Button/index.client';
 
 // Decorators
-// import withGoogleRecaptcha from '@/decorators/withGoogleRecaptcha';
+import withGoogleRecaptcha from '@/decorators/withGoogleRecaptcha';
 
 import { phoneValidation } from '@/helpers/yup.hl';
 
@@ -47,6 +46,8 @@ const Form = (props: IProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [validateAfterSubmit, setValidateAfterSubmit] = useState(false);
 
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const schema = Yup.object().shape({
     name: Yup.string().required(fieldIsRequired),
     phone: phoneValidation(validation),
@@ -56,22 +57,25 @@ const Form = (props: IProps) => {
 
   const handlerSubmit = async () => {
     setIsLoading(true);
-    try {
-      await axios({
-        url: `${location?.origin}/api/send/contact`,
-        method: 'POST',
-        data: {
-          // gReCaptchaToken,
-          ...values
-        }
-      });
-      toast("Message has been sent!");
-      resetForm();
-    } catch (error: any) {
-      toast("Something went wrong");
-    } finally {
-      setIsLoading(false);
-    }
+    if (!executeRecaptcha) return;
+    executeRecaptcha("enquiryFormSubmit").then(async (gReCaptchaToken) => {
+      try {
+        await axios({
+          url: `${location?.origin}/api/send/contact`,
+          method: 'POST',
+          data: {
+            gReCaptchaToken,
+            ...values
+          }
+        });
+        toast("Message has been sent!");
+        resetForm();
+      } catch (error: any) {
+        toast("Something went wrong");
+      } finally {
+        setIsLoading(false);
+      }
+    })
   };
 
   const {
@@ -174,5 +178,4 @@ const Form = (props: IProps) => {
   );
 };
 
-// export default withGoogleRecaptcha(Form);
-export default Form;
+export default withGoogleRecaptcha(Form);
