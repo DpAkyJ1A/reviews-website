@@ -1,0 +1,38 @@
+@import '../../styles/common/color.sass'
+@import '../../styles/common/__modificators/__text.sass'
+
+.input
+  &__field
+    @extend %text--input-label
+    display: inline-block
+    background-color: transparent
+    background: $white
+    border: 2px solid transparent
+    border-radius: 10px
+    min-height: 75px
+
+    &:hover,
+    &:focus
+      border: 2px solid $dark-blue
+    &::placeholder
+      color: $dark-gray
+    &:disabled
+      cursor: not-allowed
+      // color: $gray
+      // border: 1px solid $white
+      opacity: 0.3
+    &.input__field--error
+      color: $red
+      border: 1px solid $red
+
+  &__label
+    display: inline-block
+
+  &__error-wrapper
+    position: absolute
+    z-index: 1
+    top: 12px
+    right: 20px
+  &__error-tooltip
+    // @extend %text--minimum
+    min-width: 200px

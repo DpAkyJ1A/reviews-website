@@ -1,0 +1,41 @@
+@import '../../styles/common/color.sass'
+@import '../../styles/common/__modificators/__text.sass'
+
+.textarea
+    @extend %text--input-label
+    font-weight: 400
+    position: relative
+    padding: 16px 24px
+    background: $white
+    border: 2px solid transparent
+    border-radius: 10px
+    width: 100%
+    height: 175px !important
+    resize: none
+    &:focus,
+    &:hover
+        border: 2px solid $dark-blue
+    &::placeholder
+    //   color: $extra-gray
+    &:disabled
+        cursor: not-allowed
+        // color: $gray
+        // border: 1px solid $white
+        opacity: 0.3
+
+    &__error-wrapper
+        position: absolute
+        z-index: 1
+        top: 12px
+        right: 20px
+
+    &.textarea--error
+        color: $red
+        border: 1px solid $red
+
+    &__message
+        position: absolute
+        bottom: 0
+        left: 0
+        &--error
+            // color: $brown-red

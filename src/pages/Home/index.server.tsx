@@ -6,10 +6,10 @@ import Asset from './components/Asset/index.server';
 import Advantages from './components/Advantages/index.server';
 import Help from './components/Help/index.server';
 import Enjoy from './components/Enjoy/index.server';
+import Questions from './components/Questions/index.server';
 
 // Styles
 import styles from './index.module.sass';
-import Questions from './components/Questions/index.server';
 
 interface IProps {
   page: IPage;

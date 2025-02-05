@@ -1,0 +1,41 @@
+@import '../../styles/common/media'
+
+.contact
+  margin-top: 88px
+
+  &__container
+    display: flex
+    gap: 32px
+    justify-content: space-between
+    align-items: flex-start
+
+  &__content
+    width: 845px
+
+  &__title
+    margin-bottom: 14px
+
+  &__text
+    margin-bottom: 48px
+
+  &__form
+    margin-top: 28px
+    display: flex
+    flex-direction: column
+    gap: 28px
+
+  &__row
+    display: flex
+    gap: 24px
+
+  &__button
+    margin-top: 12px
+
+  &__image
+    position: relative
+    aspect-ratio: 717 / 472
+    max-width: 717px
+    width: 36%
+    @media (max-width: $width-laptop-xl)
+      width: 36%
+      transform: translateX(2vw)

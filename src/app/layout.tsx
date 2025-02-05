@@ -3,6 +3,8 @@ import Header from '@/components/Header/index.server';
 import Footer from '@/components/Footer/index.server';
 import LightsBackground from '@/components/LightsBackground/index.server';
 
+import { ToastContainer } from 'react-toastify';
+
 // Styles
 import '@/styles/build.sass';
 
@@ -25,6 +27,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <ToastContainer autoClose={500000} />
         </LightsBackground>
       </body>
     </html>
