@@ -1,15 +1,16 @@
-import { getPage } from "@/actions/page";
+import { getGood } from "@/actions/good";
 import { headers } from "next/headers";
 
-export default async function getPageMetadata({ page, category, searchParams }: { page: string, lang?: string, category?: string, searchParams?: { [key: string]: string } }) {
+export default async function getGoodMetadata({ label }: { label: string }) {
     const {
-        url,
         meta: {
             title = '',
             description = '',
             keywords = ''
         } = {}
-    } = await getPage(page);
+    } = await getGood(label);
+
+    const url = `product/${label}`;
 
     const getHeaders = headers();
     const host = getHeaders?.get('host');
@@ -17,12 +18,12 @@ export default async function getPageMetadata({ page, category, searchParams }: 
     const siteMainUrl = `${protocol}://${host}`;
 
     return {
-        title: `${title}${searchParams?.page ? ` - page ${searchParams?.page}` : ''}`,
-        description: `${description}${searchParams?.page ? ` page ${searchParams?.page}` : ''}`,
+        title,
+        description,
         keywords,
         authors: [{ name: host, url: siteMainUrl }],
         alternates: {
-            canonical: `${siteMainUrl}/${url !== '/' ? url : ''}${category ? `/${category}` : ''}`,
+            canonical: `${siteMainUrl}/${url !== '/' ? url : ''}`,
         },
         // openGraph: {
         //     title,

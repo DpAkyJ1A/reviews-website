@@ -1,0 +1,79 @@
+@import '../../../../styles/common/media'
+@import '../../../../styles/common/__modificators/__text'
+
+.options
+  width: 845px
+
+  &__options
+    margin-top: 74px
+    display: flex
+    gap: 25px
+    flex-direction: column
+
+  &__option
+    width: 100%
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    border-radius: 15px
+    padding-top: 28px
+    padding-right: 20px
+    padding-bottom: 28px
+    padding-left: 20px
+    border-width: 1.16px
+    border: 1.16px solid #0271E41A
+    backdrop-filter: blur(30px)
+    background: #FFFFFF05
+
+    &--active
+      background: linear-gradient(90.47deg, rgba(30, 141, 255, 0.2) 0%, rgba(157, 114, 255, 0.2) 25%, rgba(255, 71, 171, 0.2) 50%, rgba(255, 56, 107, 0.2) 74.5%, rgba(255, 129, 0, 0.2) 100%)
+      border: 1.16px solid #0271E4
+
+  &__option-content
+    width: 370px
+    display: flex
+    flex-direction: column
+    gap: 8px
+
+  &__textarea
+    margin-top: 28px
+
+  &__textarea-field
+    height: 150px !important
+
+  &__textarea-footnote
+    width: 278px
+    margin-top: 20px
+
+  &__button
+    margin-top: 40px
+
+  &__counter-label
+    margin-top: 30px
+    margin-bottom: 12px
+
+  &__counter
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 300px
+    height: 75px
+    border-radius: 15px
+    background: #FFFFFF
+    overflow: hidden
+
+  &__counter-btn
+    @extend %text--buy
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 92px
+    height: 100%
+    font-weight: 700
+    background: #FFFFFF
+    color: #0271E4
+    &--left
+      border-right: 1px solid black
+    &--right
+      border-left: 1px solid black

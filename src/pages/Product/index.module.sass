@@ -1,0 +1,45 @@
+@import '../../styles/common/media'
+
+.product
+  margin-top: 110px
+
+  &__wrapper
+    display: flex
+    gap: 32px
+    justify-content: space-between
+    align-items: flex-start
+
+  &__content
+    width: 860px
+    margin-top: 64px
+
+  &__title
+    width: fit-content
+    margin: 0 auto
+    margin-bottom: 14px
+
+  &__text
+    margin-bottom: 48px
+
+  &__form
+    margin-top: 28px
+    display: flex
+    flex-direction: column
+    gap: 28px
+
+  &__row
+    display: flex
+    gap: 24px
+
+  &__button
+    margin-top: 12px
+
+  &__image
+    position: relative
+    aspect-ratio: 1 / 1
+    width: 48%
+    transform: translateX(30px)
+    height: auto
+    @media (max-width: $width-laptop-xl)
+      width: 40%
+      transform: translateX(2vw)

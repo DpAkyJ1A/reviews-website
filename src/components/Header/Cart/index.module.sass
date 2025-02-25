@@ -1,12 +1,77 @@
 @import '../../../styles/common/color'
 
 .cart
+  position: relative
   &__content
-    position: absolute
-    z-index: 1
-    top: 0
-    background: rgba($black, 0.2)
-    backdrop-filter: blur(50px)
     display: none
     &--open
-      display: block
+      max-height: min(1000px, calc(100vh - 110px))
+      display: flex
+      flex-direction: column
+      width: 385px
+      padding: 60px 0 30px
+      position: absolute
+      z-index: 1
+      top: -20px
+      right: -20px
+      background: rgba($black, 0.2)
+      backdrop-filter: blur(50px)
+
+  &__open
+
+  &__close
+    position: absolute
+    top: 15px
+    right: 15px
+
+  &__title
+    margin-bottom: 32px
+
+  &__items
+    display: flex
+    flex-direction: column
+    gap: 20px
+
+  &__item
+    padding: 0 20px
+    width: 100%
+    display: flex
+    gap: 15px
+    padding-bottom: 12px
+    border-bottom: 1px solid #FFFFFF33
+
+  &__item-image
+
+  &__item-title
+
+  &__item-price
+    margin-top: 14px
+
+  &__item-description-wrapper
+    display: flex
+    flex-direction: column
+    gap: 12px
+    margin-top: 14px
+
+  &__item-description-label
+
+  &__item-comment
+    word-break: break-all
+
+  &__bottom
+    margin-top: 20px
+    padding: 0 20px
+
+  &__empty
+    padding: 0 20px
+
+  &__view-cart-button
+    min-height: 60px !important
+    margin-top: 16px
+
+  &__checkout-button
+    min-height: 60px !important
+    margin-top: 12px
+
+  // &__item-content
+  //   width: calc(100% - 15px - 50px)

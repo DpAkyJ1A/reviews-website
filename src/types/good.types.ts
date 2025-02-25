@@ -5,13 +5,22 @@ interface IGood {
   description: string;
   price: number;
 
-  url: string;
-  width: number;
-  height: number;
+  url?: string;
+  width?: number;
+  height?: number;
 
   order: number;
 
-  published: boolean;
+  siteType?: string;
+  content?: any;
+
+  published?: boolean;
+
+  meta: {
+    title?: string;
+    description?: string;
+    keywords?: string;
+  };
 }
 
 export type {

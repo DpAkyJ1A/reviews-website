@@ -22,7 +22,7 @@ export default async function Services(props: IProps) {
     } = {}
   } = props;
 
-  const goods = await getGoods();
+  const goods = await getGoods('gray');
   const sortedGoods = goods.sort((a: IGood, b: IGood) => a.order - b.order);
 
   return (
@@ -37,50 +37,60 @@ export default async function Services(props: IProps) {
           {title}
         </Text>
         <div className={`${styles.services__goods} width--100`}>
-          {sortedGoods.map((good, index) => (
-            <div key={good.label} className={styles['services__goods-item']}>
-              <div className={styles['services__goods-item-wrapper']}>
-                <div>
-                  <Text
-                    size="medium"
-                    weight="700"
-                  >
-                    {good.name}
-                  </Text>
-                  <Text
-                    size="good-description"
-                    className={styles['services__goods-item-description']}
-                  >
-                    {good.description}
-                  </Text>
-                </div>
-                <div className={styles['services__goods-item-image-wrapper']}>
-                  <Image
-                    priority
-                    src={resolveImageSrc({ internal: good.url })}
-                    alt={good.name}
-                    width={good.width / 3}
-                    height={good.height / 3}
-                    className={styles['services__goods-item-image']}
-                  />
-                </div>
-                <div className={`${styles['services__goods-item-bottom']} fl fl--justify-c fl--align-c fl--gap-20 fl--wrap`}>
-                  <Text
-                    size="medium"
-                    weight="700"
-                  >
-                    ${good.price.toFixed(2)}
-                  </Text>
-                  <Link
-                    href="/"
-                    className={`${styles['services__goods-item-button']} link--primary font--700 text--buy`}
-                  >
-                    {goodButtonText}
-                  </Link>
+          {sortedGoods.map((good, index) => {
+            const {
+              id = '',
+              label = ''
+            } = good;
+
+            return (
+              <div key={good.id} className={styles['services__goods-item']}>
+                <div className={styles['services__goods-item-wrapper']}>
+                  <div>
+                    <Text
+                      size="medium"
+                      weight="700"
+                    >
+                      {good.name}
+                    </Text>
+                    <Text
+                      size="good-description"
+                      className={styles['services__goods-item-description']}
+                    >
+                      {good.description}
+                    </Text>
+                  </div>
+                  <div className={styles['services__goods-item-image-wrapper']}>
+                    <Image
+                      priority
+                      // src={resolveImageSrc({ internal: good.url })}
+                      src={`/img/goods/${label}.webp`}
+                      alt={good.name}
+                      // width={good.width / 3}
+                      // height={good.height / 3}
+                      width={300}
+                      height={300}
+                      className={styles['services__goods-item-image']}
+                    />
+                  </div>
+                  <div className={`${styles['services__goods-item-bottom']} fl fl--justify-c fl--align-c fl--gap-20 fl--wrap`}>
+                    <Text
+                      size="medium"
+                      weight="700"
+                    >
+                      ${good.price.toFixed(2)}
+                    </Text>
+                    <Link
+                      href={`/product/${label}`}
+                      className={`${styles['services__goods-item-button']} link--primary font--700 text--buy`}
+                    >
+                      {goodButtonText}
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </div>

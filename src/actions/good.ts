@@ -25,7 +25,7 @@ const getGood = async (
 };
 
 const getGoods = async (
-  menuLabels?: string[]
+  siteType?: string
 ): Promise<IGood[]> => {
   try {
     const response = await fetch(`${CMS_REST_URL}/api/goods`, {
@@ -37,14 +37,14 @@ const getGoods = async (
     });
     const goods = await response.json();
 
-    if (!menuLabels) return goods.docs;
+    if (!siteType) return goods.docs;
 
     const goodsObject = goods.docs
-      .filter((p: IGood) => menuLabels.includes(p.label));
+      .filter((p: IGood) => siteType === p.siteType);
 
     return goodsObject;
   } catch (e) {
-    return [];
+    return [] as IGood[];
   }
 };
 

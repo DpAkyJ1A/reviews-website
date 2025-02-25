@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'reviews-admin-panel.vercel.app'],
   },
   webpack(config) {
     config.module.rules.push({

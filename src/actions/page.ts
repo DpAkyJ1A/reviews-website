@@ -14,12 +14,14 @@ const getPage = async (
         next: { revalidate: 1 },
       }
     );
+
     const pages = await response.json();
 
     const page = pages.docs.find((p: IPage) => p.label === pageLabel);
 
     return page;
   } catch (e) {
+    console.error('fuck', e)
     return {} as IPage;
   }
 };
