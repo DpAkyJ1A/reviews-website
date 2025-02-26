@@ -8,6 +8,7 @@ import { getMenu } from "@/actions/menu";
 // Styles
 import styles from './index.module.sass';
 import { IGood } from "@/types/good.types";
+import Currency from "./Currency/index.client";
 
 interface IProps {
   whiteGoods?: IGood[];
@@ -29,6 +30,7 @@ export default async function Header(props: IProps) {
           />
         </Link>
         <Menu items={items} />
+        <Currency />
         <Cart whiteGoods={whiteGoods} />
       </div>
     </header>

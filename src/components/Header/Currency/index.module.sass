@@ -1,0 +1,19 @@
+@import '../../../styles/common/color'
+
+.currency
+  margin-left: auto
+  margin-right: 20px
+  &__content
+    display: none
+    &--open
+      max-height: min(1000px, calc(100vh - 110px))
+      display: flex
+      flex-direction: column
+      width: 385px
+      padding: 60px 0 30px
+      position: absolute
+      z-index: 999
+      top: -20px
+      right: -20px
+      background: rgba($black, 0.2)
+      backdrop-filter: blur(50px)
