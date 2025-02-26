@@ -28,6 +28,7 @@ const ProductOptions = (props: IProps) => {
       name = '',
       description = '',
       content: {
+        whiteGoodLabel = '',
         options = [],
         textareaLabel = '',
         textareaFootNote = '',
@@ -63,7 +64,8 @@ const ProductOptions = (props: IProps) => {
       comment: (options.length > 0 && selectedOptionIndex === 0) || !options.length ? comment : '',
       price: options.length > 0 ? options?.[selectedOptionIndex]?.price : price,
       quantity: options.length > 0 && selectedOptionIndex === 0 ? 1 : count,
-      label
+      label,
+      actualLabel: whiteGoodLabel
     });
 
     toast("The product has been added to the cart");

@@ -11,10 +11,16 @@ import Image from 'next/image';
 import Button from "@/common/Button/index.client";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { toast } from "react-toastify";
+import { IGood } from "@/types/good.types";
 
-export default function Cart() {
+interface IProps {
+  whiteGoods?: IGood[];
+}
+
+export default function Cart(props: IProps) {
+  const { whiteGoods } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const { cart, totalPrice, clearCart } = useCartStore();
+  const { cart, totalPrice, clearCart, setGoods, goods } = useCartStore();
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -25,6 +31,24 @@ export default function Cart() {
   }
 
   const checkoutHandle = async () => {
+    const updatedCart = cart.map((item) => {
+      const whiteGood = goods.find((good) => good.label === item.actualLabel);
+
+      if (!whiteGood) {
+        toast("Something went wrong");
+        return;
+      }
+
+      return {
+        name: whiteGood?.name,
+        description: whiteGood?.description,
+        option: item?.optionIndex && whiteGood?.content?.options?.[item?.optionIndex]?.name || '',
+        comment: item.comment,
+        price: item.price,
+        quantity: item.quantity
+      }
+    });
+
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_PROXY_SITE_URL}/api/create-checkout-session`, {
         method: 'POST',
@@ -32,7 +56,7 @@ export default function Cart() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          cart,
+          cart: updatedCart,
           callbackUrl: window.location.href,
         }),
       });
@@ -64,6 +88,12 @@ export default function Cart() {
     }
   }, [searchParams, clearCart]);
 
+  useEffect(() => {
+    if (whiteGoods) {
+      setGoods(whiteGoods);
+    }
+  }, [whiteGoods])
+
   return (
     <div className={styles.cart}>
       <Icon
@@ -75,6 +105,16 @@ export default function Cart() {
         }}
         onClick={() => setIsOpen(true)}
       />
+      {cart.length > 0 ? (
+        <span className={styles.cart__count}>
+          <Text
+            size="cart-count"
+            color="black"
+          >
+            {cart.length}
+          </Text>
+        </span>
+      ) : null}
       <div className={`${styles.cart__content} ${isOpen ? styles['cart__content--open'] : ''}`}>
         <Icon
           icon="linear/cross"

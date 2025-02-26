@@ -7,8 +7,14 @@ import { getMenu } from "@/actions/menu";
 
 // Styles
 import styles from './index.module.sass';
+import { IGood } from "@/types/good.types";
 
-export default async function Header() {
+interface IProps {
+  whiteGoods?: IGood[];
+}
+
+export default async function Header(props: IProps) {
+  const { whiteGoods } = props;
   const { items } = await getMenu('main');
 
   return (
@@ -23,7 +29,7 @@ export default async function Header() {
           />
         </Link>
         <Menu items={items} />
-        <Cart />
+        <Cart whiteGoods={whiteGoods} />
       </div>
     </header>
   );

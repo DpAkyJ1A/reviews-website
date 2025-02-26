@@ -2,14 +2,17 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 import { ICartItem } from "@/types/cart.types";
+import { IGood } from "@/types/good.types";
 
 type CartState = {
   cart: ICartItem[];
   totalPrice: string;
+  goods: IGood[];
   addToCart: (item: ICartItem) => void;
   removeFromCart: (id: string, optionIndex?: number) => void;
   clearCart: () => void;
   updateTotalPrice: () => void;
+  setGoods: (list: IGood[]) => void;
 };
 
 export const useCartStore = create<CartState>()(
@@ -17,6 +20,7 @@ export const useCartStore = create<CartState>()(
     (set, get) => ({
       cart: [],
       totalPrice: "0",
+      goods: [],
 
       updateTotalPrice: () => {
         const total = get().cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -59,6 +63,10 @@ export const useCartStore = create<CartState>()(
 
       clearCart: () => {
         set({ cart: [], totalPrice: "0" });
+      },
+
+      setGoods: (list) => {
+        set({ goods: list })
       }
     }),
     { name: "cart-storage" } // Save cart in localStorage

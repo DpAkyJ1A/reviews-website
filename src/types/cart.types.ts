@@ -1,6 +1,7 @@
 interface ICartItem {
   id: string;
   label: string;
+  actualLabel: string;
   name: string;
   description: string;
   optionIndex?: number;
