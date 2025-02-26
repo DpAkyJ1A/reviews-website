@@ -21,18 +21,23 @@ export default function Currency() {
 
   return (
     <div className={styles.currency}>
-      <Text onClick={() => setIsOpen((prev) => !prev)}>
+      <Text size="small" onClick={() => setIsOpen((prev) => !prev)} className="cursor--pointer">
         {currency.symbol} - {currency.code}
       </Text>
-      <Text>
+      <Text size="tiny">
         50 usd = {convert(50).toFixed(2)} {currency.symbol}
       </Text>
       <div className={`${styles.currency__content} ${isOpen ? styles['currency__content--open'] : ''}`}>
         {CURRENCIES.map((item) => (
-          <Text key={item.code} onClick={() => {
-            setCurrency(item);
-            setIsOpen(false);
-          }}>
+          <Text
+            key={item.code}
+            size="small"
+            onClick={() => {
+              setCurrency(item);
+              setIsOpen(false);
+            }}
+            className="cursor--pointer"
+          >
             {item.symbol} - {item.code}
           </Text>
         ))}
